@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#f6f9f8"><meta name="apple-mobile-web-app-capable" content="yes"><title>CUBE SNAP — Spatial Discovery v0.2</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#f6f9f8"><meta name="apple-mobile-web-app-capable" content="yes"><title>CUBE SNAP — Spatial Discovery v0.3</title>
 <style>
 :root{color-scheme:light;--bg:#f6f9f8;--paper:#fff;--ink:#2a4249;--muted:#8da2a4;--cyan:#0b969d;--deep:#077c83;--line:#e4edeb;--tealsoft:#e5f4f1}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;-webkit-text-size-adjust:100%}body{-webkit-tap-highlight-color:transparent}
@@ -33,22 +33,57 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;touch-action:manipulat
 .guide{text-align:center;padding:13px 0 0;font-size:10px;color:#9aadaf;font-weight:610;line-height:1.7}.credit{text-align:center;margin-top:10px;color:#c2cecc;font-size:9px;letter-spacing:.1em;font-weight:620}
 @media(max-width:360px){.shell{padding-left:8px;padding-right:8px}.paper{padding-left:5px;padding-right:5px}.dashboard{padding-left:8px;padding-right:8px}.depth{right:3px}.legend{gap:6px;font-size:9px}.actions button{padding:0 7px}.guide{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Spatial Edition v0.3 — restrained architectural lines, not a decorated game board. */
+:root{--bg:#f7faf9;--paper:#ffffff;--ink:#294149;--muted:#90a5a5;--cyan:#0e9da0;--deep:#0b7f87;--line:#e5efec}
+.shell{max-width:472px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.brand{height:34px;padding-top:2px}.wordmark{letter-spacing:.175em;font-weight:800}.version{letter-spacing:.13em;color:#a9b9b8;font-size:8.5px}
+.pager{margin-bottom:8px}.pager button{height:38px;box-shadow:0 1px 4px #244d4a05;border-radius:11px}
+.paper{padding-bottom:10px;border-radius:17px;box-shadow:0 8px 30px #315a5608}
+.dashboard{padding-top:13px;padding-bottom:10px}.subtitle{font-weight:710}
+.board{aspect-ratio:360/455;background:radial-gradient(ellipse 80% 65% at 49% 55%,#ffffff 0%,#fcfefd 77%,#f7fbfa 100%);border-radius:12px;border-color:#e8f0ed}
+.headline{top:13px;color:#7c9d9e;letter-spacing:.14em;font-size:9.8px;font-weight:740}
+.hintline{font-size:9px;color:#b0c2c1;font-weight:640;bottom:14px;left:13px}
+.floor{stroke:#e6efec;stroke-width:.78}.floor-outer{stroke:#d7e6e2;stroke-width:1.1}
+.axis-spine{stroke:#b5d6d0;stroke-width:1.1;stroke-opacity:.7;vector-effect:non-scaling-stroke}
+.axis-trace{stroke:#dceae7;stroke-width:.83;stroke-dasharray:2 7;vector-effect:non-scaling-stroke}
+.axis-label{fill:#a4beb9;font-size:8px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.02em;font-weight:700}
+.working-plane{fill:#75c7bd;fill-opacity:.025;stroke:#acd6d0;stroke-opacity:.58;stroke-width:.8;stroke-dasharray:2.5 5;vector-effect:non-scaling-stroke}
+.plumb-line{stroke:#94c8bf;stroke-opacity:.28;stroke-width:1.05;stroke-dasharray:3 5;vector-effect:non-scaling-stroke}
+.plumb-foot{fill:#9bcbc4;fill-opacity:.57;stroke:#fff;stroke-width:1;vector-effect:non-scaling-stroke}
+.ghost-face{fill:#0cb5b0;fill-opacity:.033}.ghost-face.ready{fill:#14bcb3;fill-opacity:.091}
+.ghost-edge{stroke:#138c93;stroke-width:1.75;opacity:.86}.ghost-edge.back{opacity:.31;stroke-dasharray:3.1 4.3}
+.ghost-edge.ready{stroke:#0d918e;stroke-width:2.6}
+.ghost-handle{fill:#fff;stroke:#119fa3;stroke-width:1.9;filter:drop-shadow(0 1px 2px #198e8720)}
+.ghost-cross{stroke:#129fa3}
+.depth-connector{fill:none;stroke:#75bbb3;stroke-opacity:.78;stroke-width:1.35;stroke-dasharray:3 4;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.depth-grip{fill:#fff;stroke:#11989a;stroke-width:1.75;filter:drop-shadow(0 1px 2px #198e8720);vector-effect:non-scaling-stroke}
+.depth-grip-dot{fill:#129a9f;pointer-events:none}
+.depth-grip-caption{font-size:8.5px;font-weight:760;letter-spacing:.105em;fill:#6ca9a6;pointer-events:none}
+.dot{stroke:#ffffff;stroke-width:1.55;paint-order:stroke fill}
+.dot.single{fill:#2b444b}.dot.multi{fill:#08979b}.dot.exhausted{fill:#becdcc}
+.depth-hud{position:absolute;right:14px;bottom:13px;z-index:2;color:#a1b8b5;font-weight:750;letter-spacing:.11em;font-size:8.8px;pointer-events:none;font-variant-numeric:tabular-nums}
+.shape-control{margin-top:9px;border-radius:11px;background:#f9fbfa;padding:5px;grid-template-columns:37px minmax(0,1fr) 37px}
+.shape-control button{height:35px;border-radius:8px;background:#fff;font-size:21px;border-color:#e3eeea}
+.shape-tag{font-size:8.5px;color:#95aaa9}.shape-name{font-size:11.5px;font-weight:760}
+.footer{padding-top:10px}.actions button{border-radius:8px}.guide{padding-top:10px;font-size:9.4px;letter-spacing:.015em}.credit{font-size:8.6px;margin-top:6px}
+@media(max-width:360px){.guide{font-size:8.8px}.depth-hud{right:9px}}
 </style></head><body>
 <div class="shell">
-<header class="brand"><div class="wordmark"><span class="mark"></span>CUBE SNAP</div><div class="version">SPATIAL EDITION · V0.2</div></header>
+<header class="brand"><div class="wordmark"><span class="mark"></span>CUBE SNAP</div><div class="version">SPATIAL EDITION · V0.3</div></header>
 <nav class="pager"><button id="prevStage" class="arrow" aria-label="Previous stage">‹</button><button id="stageButton" class="stage" aria-expanded="false">STAGE <span id="stageNum">01</span> <small>/ 24 ▾</small></button><button id="nextStage" class="arrow" aria-label="Next stage">›</button></nav>
 <div class="picker" id="picker" hidden></div>
 <main class="paper"><div class="dashboard"><div><div class="overline">FIND EVERY HIDDEN CUBE</div><div class="subtitle" id="subtitle">THE FIRST CUBE</div></div><div class="found"><b id="found">0</b><small>FOUND</small></div></div>
 <div class="progress"><span>POINTS CLEARED</span><b id="cleared">0 / 8</b></div><div class="track"><div class="fill" id="fill"></div></div>
 <div class="board" id="board"><svg id="scene" viewBox="0 0 360 450" aria-label="A three-dimensional puzzle scene. Drag the wireframe cube to position it. Drag empty space to turn the view."><g id="floorLayer"></g><g id="foundLayer"></g><g id="ghostLayer"></g><g id="dotsLayer"></g><g id="effectsLayer"></g></svg>
-<div class="headline" id="boardHint">DRAG THE CUBE INTO THE DOTS</div><div class="hintline">DRAG EMPTY SPACE TO ROTATE</div>
-<div class="depth" id="depth"><div class="depth-name">DEPTH</div><button id="depthUp" aria-label="Go one depth layer higher">⌃</button><div class="depth-track" id="depthTrack" aria-label="Depth slider"><div class="depth-ticks" id="depthTicks"></div><div class="depth-thumb" id="depthThumb"></div></div><button id="depthDown" aria-label="Go one depth layer lower">⌄</button><div class="depth-index" id="depthIndex">1 / 1</div></div>
+<div class="headline" id="boardHint">DRAG THE CUBE INTO THE DOTS</div><div class="hintline">DRAG THE AIR TO ORBIT</div>
+<div class="depth-hud" id="depthIndex">DEPTH 01</div>
 <div class="toast" id="toast" aria-live="polite"></div>
 <div class="completion" id="completion" hidden><div class="complete-title">STAGE <span id="completeStage">01</span> COMPLETE</div><div class="complete-sub" id="completeSub">EVERY CUBE DISCOVERED</div><div class="complete-actions"><button class="replay" id="replay">REPLAY</button><button class="next" id="next">NEXT ›</button></div></div>
 </div>
-<div class="shape-control"><button id="shapePrev" aria-label="Previous cube shape">‹</button><div class="shape-center"><div class="shape-tag">CUBE FORM <span id="formPos">1 / 1</span></div><div class="shape-name" id="formName">STRAIGHT · 3</div></div><button id="shapeNext" aria-label="Next cube shape">›</button></div>
+<div class="shape-control"><button id="shapePrev" aria-label="Previous cube shape">‹</button><div class="shape-center"><div class="shape-tag">CUBE GEOMETRY <span id="formPos">1 / 1</span></div><div class="shape-name" id="formName">STRAIGHT · 3</div></div><button id="shapeNext" aria-label="Next cube shape">›</button></div>
 <div class="footer"><div class="legend"><span class="legend-item"><i></i>1×</span><span class="legend-item"><i class="multi"></i>2×+</span><span class="legend-item"><i class="done"></i>DONE</span></div><div class="actions"><button id="hint">HINT</button><button id="sound" aria-pressed="true">SOUND ON</button></div></div>
-</main><div class="guide">DRAG CUBE TO MOVE · SLIDE DEPTH · DRAG SPACE TO ORBIT</div><div class="credit">8 VERTICES · 12 EDGES · 6 FACES</div>
+</main><div class="guide">DRAG CUBE · PINCH TO RESIZE · TWIST TO TURN · DRAG SPACE TO ORBIT</div><div class="credit">8 VERTICES · 12 EDGES · 6 FACES</div>
 </div><script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id),SVG='http://www.w3.org/2000/svg';
@@ -120,12 +155,24 @@ for(let i=0;i<LEVELS.length;i++)for(const cube of LEVELS[i].solutions){const id=
  }
  shapeMap.set(id,{id,ps,ext,edges,faces,side:Math.sqrt(edgeLen),first:i});
  }}
-const SHAPES=[...shapeMap.values()].sort((a,b)=>a.first-b.first||a.side-b.side);
+// Usable shapes are a workbench, not answers: non-solution sizes stay available.
+for(let s=1;s<=7;s++){
+ const ps=cubePts([0,0,0],A(s)),id=shapeSignature(ps);
+ if(!shapeMap.has(id))shapeMap.set(id,{id,ps,ext:[s,s,s],edges:E,faces:F,side:s,first:0});
+}
+const SHAPES=[...shapeMap.values()];
+const isStraight=s=>s.ps.every(p=>p.every(v=>v===0||v===s.side))&&s.ext.every(v=>v===s.side);
+for(const candidate of SHAPES)if(isStraight(candidate))candidate.first=0;
+SHAPES.sort((a,b)=>a.first-b.first||a.side-b.side);
+const orientationKey=s=>canonical(s.ps.map(p=>p.map(v=>Math.round(10000*v/s.side))));
+function sizesFor(s){return allowed.filter(q=>orientationKey(q)===orientationKey(s)).sort((a,b)=>a.side-b.side)}
+function turnVariants(s){return allowed.filter(q=>Math.abs(q.side-s.side)<.001).sort((a,b)=>a.first-b.first||a.id.localeCompare(b.id))}
 // Introduce variants gradually; never restrict a mathematically valid solution.
 const STORE='cube_snap_spatial_v02';let saved={stage:0,done:{},sound:true};try{const obj=JSON.parse(localStorage.getItem(STORE)||'null');if(obj&&typeof obj==='object')saved={...saved,...obj}}catch(_){}
 const persist=()=>{try{localStorage.setItem(STORE,JSON.stringify(saved))}catch(_){}};
 let stage=-1,level,found=new Set(),used=new Map(),camera={yaw:.76,pitch:-.49,zoom:1},sceneCenter=[0,0,0],viewScale=35,radius=4,projection=new Map(),ghost=[0,0,0],shape=SHAPES[0],allowed=SHAPES,drag=null,pointers=new Map(),raf=0,flash=null,flashTimer=null,toastTimer=null,finishTimer=null,ringHint=null,clickLast=0,audio=null,voice=null;
-let boundsMin=[0,0,0],boundsMax=[0,0,0],hitArea=[];
+let boundsMin=[0,0,0],boundsMax=[0,0,0],hitArea=[],depthGripPoint=null,gesture=null;
+let cubeIsMoving=false;
 function persistFound(){saved.done[String(stage)]=[...found];saved.stage=stage;persist()}
 function validLevel(){return level.solutions.length>0&&level.points.every(p=>level.degree.get(key(p))>0)}
 const shapeWorld=(s,at)=>s.ps.map(p=>add(p,at));
@@ -150,6 +197,14 @@ function drawFloor(){const g=document.createDocumentFragment(),y=boundsMin[1]-1.
  for(let x=Math.floor(x0);x<=Math.ceil(x1);x++){const a=xy([x,y,z0]),b=xy([x,y,z1]);g.append(drawLine(a,b,'floor'))}
  for(let z=Math.floor(z0);z<=Math.ceil(z1);z++){const a=xy([x0,y,z]),b=xy([x1,y,z]);g.append(drawLine(a,b,'floor'))}
  const outer=[[x0,y,z0],[x1,y,z0],[x1,y,z1],[x0,y,z1]].map(xy);for(let i=0;i<4;i++)g.append(drawLine(outer[i],outer[(i+1)%4],'floor-outer'));
+ // A quiet three-axis corner keeps the scene legible as 3D without a full cage.
+ const o=[x0,y,z0],ex=[x1,y,z0],ey=[x0,boundsMax[1]+1,z0],ez=[x0,y,z1];
+ for(const q of [ex,ey,ez])g.append(drawLine(xy(o),xy(q),'axis-spine'));
+ for(const [word,q] of [['X',ex],['Y',ey],['Z',ez]]){
+  const at=xy(q);const label=e('text',{x:(at.x+4).toFixed(2),y:(at.y-4).toFixed(2),class:'axis-label'});label.textContent=word;g.append(label)
+ }
+ // Three architectural guide posts: lower contrast than the actual point cloud.
+ for(const [x,z] of [[x1,z0],[x0,z1],[x1,z1]])g.append(drawLine(xy([x,y,z]),xy([x,boundsMax[1]+.55,z]),'axis-trace'));
  $('floorLayer').replaceChildren(g);
 }
 function cubeEdges(P){const d=Math.min(...P.flatMap((p,i)=>P.slice(i+1).map(q=>len2(sub(p,q)))));const result=[];for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++)if(len2(sub(P[i],P[j]))===d)result.push([P[i],P[j]]);return result}
@@ -157,13 +212,28 @@ function drawFound(){const g=document.createDocumentFragment();for(const s of le
 function ghostDisplay(){const r=integerOrigin();const v=ghost.map((n,i)=>Math.abs(n-r[i])<.21?r[i]:n);return v}
 function drawGhost(){const state=ghostState(),pos=ghostDisplay(),ps=shapeWorld(shape,pos),proj=ps.map(xy),center=xy(add(pos,shape.ext.map(a=>a/2)));
  const g=document.createDocumentFragment(),faceRows=shape.faces.map(face=>{const nodes=face.map(i=>proj[i]);const avg=nodes.reduce((a,p)=>a+p.z,0)/4;const center2={x:nodes.reduce((a,p)=>a+p.x,0)/4,y:nodes.reduce((a,p)=>a+p.y,0)/4};const sorted=[...nodes].sort((a,b)=>Math.atan2(a.y-center2.y,a.x-center2.x)-Math.atan2(b.y-center2.y,b.x-center2.x));return {sorted,avg}}).sort((a,b)=>a.avg-b.avg);
+ // The ground footprint and a plumb line explain height without obscuring dots.
+ const yGround=boundsMin[1]-1.35,anchor=add(pos,shape.ext.map(v=>v/2)),drop=xy([anchor[0],yGround,anchor[2]]);
+ g.append(drawLine(center,drop,'plumb-line'),drawCircle(drop,2.75,'plumb-foot'));
+ if(cubeIsMoving){
+  const x0=Math.floor(anchor[0])-1.5,x1=Math.floor(anchor[0])+1.5,z0=Math.floor(anchor[2])-1.5,z1=Math.floor(anchor[2])+1.5;
+  g.append(drawPoly([[x0,anchor[1],z0],[x1,anchor[1],z0],[x1,anchor[1],z1],[x0,anchor[1],z1]].map(xy),'working-plane'));
+ }
  for(const {sorted} of faceRows)g.append(drawPoly(sorted,'ghost-face'+(state.ready&&state.precise?' ready':'')));
  const side=shape.ps.map((p,i)=>proj[i]);
  for(const [a,b] of shape.edges){const av=side[a],bv=side[b];g.append(drawLine(av,bv,'ghost-edge'+(state.ready&&state.precise?' ready':'')+(av.z+bv.z<0?' back':'')))}
- g.append(drawCircle(center,9.2,'ghost-handle'));
+ g.append(drawCircle(center,8.1,'ghost-handle'));
+ // An attached, draggable depth grip replaces the disconnected side slider.
+ const handleAnchor=add(pos,shape.ext.map(v=>v/2));
+ const outward=Math.max(2.25,shape.ext[2]+1.05),gripWorld=add(handleAnchor,[0,0,-outward]);
+ const gripRaw=xy(gripWorld),grip={...gripRaw,x:clamp(gripRaw.x,24,315),y:clamp(gripRaw.y,75,405)};depthGripPoint=grip;
+ g.append(drawLine(center,grip,'depth-connector'));
+ g.append(drawCircle(grip,7.8,'depth-grip'));
+ g.append(drawCircle(grip,2.2,'depth-grip-dot'));
+ const lbl=e('text',{x:(grip.x+10.8).toFixed(2),y:(grip.y+3).toFixed(2),class:'depth-grip-caption'});lbl.textContent='DEPTH';g.append(lbl);
  for(const [x1,y1,x2,y2]of [[-4,0,4,0],[0,-4,0,4]])g.append(e('line',{x1:center.x+x1,y1:center.y+y1,x2:center.x+x2,y2:center.y+y2,class:'ghost-cross'}));
  $('ghostLayer').replaceChildren(g);hitArea=hull(proj);
- $('boardHint').textContent=state.ready&&state.precise?'RELEASE TO SNAP':stage<5?'DRAG THE CUBE INTO THE DOTS':'ALIGN ALL 8 CORNERS';
+ $('boardHint').textContent=state.ready&&state.precise?'RELEASE TO SNAP':cubeIsMoving?'FOLLOW THE GRID':'MOVE THE CUBE INTO THE DOTS';
 }
 function drawDots(){const g=document.createDocumentFragment(),ordered=[...level.points].sort((a,b)=>xy(a).z-xy(b).z);projection=new Map();for(const p of ordered){const q=xy(p),id=key(p),deg=level.degree.get(id),n=used.get(id)||0;projection.set(id,q);
  const type=n>=deg?'exhausted':deg>1?'multi':'single';let r=clamp(4.8*q.fac,3.3,6.2);if(ringHint&&ringHint===id){g.append(drawCircle(q,r+8,'dot hinted',{fill:'none',stroke:'#b69b6e','stroke-width':1.9,'stroke-dasharray':'3 3'}))}g.append(drawCircle(q,r,'dot '+type));}
@@ -197,28 +267,25 @@ function trySnap(){const s=ghostState();ghost=s.origin;
  // After success, move the free cube slightly away so its old position doesn't obstruct the next puzzle.
  ghost=clampGhost(ghost.map((v,i)=>v+(i===0?-1:i===1?1:0)));refresh();return true;
 }
-function updateDepth(){const min=Math.round(boundsMin[2]-1),max=Math.round(Math.max(boundsMin[2]-1,boundsMax[2]-shape.ext[2]+1));const z=clamp(Math.round(ghost[2]),min,max),n=Math.max(1,max-min+1),index=z-min;
- $('depthIndex').textContent=`${index+1} / ${n}`;$('depthUp').disabled=z>=max;$('depthDown').disabled=z<=min;
- const ratio=n===1?.5:1-index/(n-1);$('depthThumb').style.top=`${15+ratio*calcTrackHeight()}px`;
- const ticks=$('depthTicks');ticks.replaceChildren();for(let i=0;i<n;i++){const mark=document.createElement('i');mark.style.top=`${n===1?50:(i*100/(n-1))}%`;ticks.append(mark)}
-}
-function calcTrackHeight(){return Math.max(0,($('depthTrack').getBoundingClientRect().height||150)-30)}
+function updateDepth(){const min=Math.round(boundsMin[2]-1),max=Math.round(Math.max(boundsMin[2]-1,boundsMax[2]-shape.ext[2]+1));
+ const z=clamp(Math.round(ghost[2]),min,max);$('depthIndex').textContent=`DEPTH ${String(z-min+1).padStart(2,'0')} / ${String(max-min+1).padStart(2,'0')}`;}
 function setDepth(z){const prev=integerOrigin()[2];ghost[2]=z;ghost=clampGhost(ghost);if(Math.round(ghost[2])!==prev)sound('depth');schedule()}
-function changeShape(diff){const ix=allowed.indexOf(shape),next=allowed[(ix+diff+allowed.length)%allowed.length];if(next===shape)return;const center=add(ghost,shape.ext.map(v=>v/2));shape=next;ghost=clampGhost(center.map((x,j)=>Math.round(x-shape.ext[j]/2)));updateForm();sound('form');schedule()}
-function updateForm(){const index=allowed.indexOf(shape),isStraight=shape.ps.some(p=>shape.ext.every(t=>t===shape.side));const label=isStraight?`STRAIGHT · ${Math.round(shape.side)}`:`TILTED · ${String.fromCharCode(65+SHAPES.filter(q=>q.side===3&&q.first>=8).indexOf(shape))}`;
+function applyShape(next){if(next===shape)return false;const center=add(ghost,shape.ext.map(v=>v/2));shape=next;ghost=clampGhost(center.map((x,j)=>x-shape.ext[j]/2));updateForm();sound('form');schedule();return true}
+function changeShape(diff){const ix=allowed.indexOf(shape),next=allowed[(ix+diff+allowed.length)%allowed.length];applyShape(next)}
+function updateForm(){const index=allowed.indexOf(shape),straight=isStraight(shape);const label=straight?`STRAIGHT · ${Math.round(shape.side)} UNITS`:`TILTED · ${Math.round(shape.side)} UNITS`;
  $('formPos').textContent=`${index+1} / ${allowed.length}`;$('formName').textContent=label;$('shapePrev').disabled=allowed.length===1;$('shapeNext').disabled=allowed.length===1;
 }
 function drawPicker(){const p=$('picker');p.replaceChildren();for(let i=0;i<LEVELS.length;i++){const b=document.createElement('button');b.textContent=String(i+1).padStart(2,'0');b.className=(i===stage?'current ':'')+(Array.isArray(saved.done[String(i)])&&saved.done[String(i)].length===LEVELS[i].solutions.length?'completed':'');b.addEventListener('click',()=>{load(i);p.hidden=true;$('stageButton').setAttribute('aria-expanded','false')});p.append(b)}}
 function load(i){clearTimeout(finishTimer);clearTimeout(flashTimer);if(raf)cancelAnimationFrame(raf);raf=0;
  stage=(i+LEVELS.length)%LEVELS.length;level=LEVELS[stage];found=new Set();used=new Map(level.points.map(p=>[key(p),0]));const valid=new Set(level.solutions.map(s=>s.id));for(const id of saved.done[String(stage)]||[])if(valid.has(id))found.add(id);
  for(const s of level.solutions)if(found.has(s.id))for(const p of s.points)used.set(key(p),(used.get(key(p))||0)+1);
- allowed=SHAPES.filter(s=>s.first<=stage);shape=allowed[0];sizeBox();ghost=clampGhost(boundsMin.map(v=>v-1));camera={yaw:.65+(stage%4)*.11,pitch:-.42-(stage%3)*.09,zoom:1};
- flash=null;ringHint=null;pointers.clear();drag=null;hitArea=[];
- $('stageNum').textContent=String(stage+1).padStart(2,'0');$('subtitle').textContent=level.title;$('completion').hidden=true;$('completion').classList.remove('show');$('picker').hidden=true;$('stageButton').setAttribute('aria-expanded','false');$('boardHint').textContent='DRAG THE CUBE INTO THE DOTS';
+ sizeBox();allowed=SHAPES.filter(s=>s.first<=stage&&s.ext.every((v,j)=>v<=boundsMax[j]-boundsMin[j]+2));shape=allowed.find(s=>isStraight(s)&&s.side===3)||allowed[0];ghost=clampGhost(boundsMin.map(v=>v-1));camera={yaw:.65+(stage%4)*.11,pitch:-.42-(stage%3)*.09,zoom:1};
+ flash=null;ringHint=null;pointers.clear();drag=null;gesture=null;cubeIsMoving=false;depthGripPoint=null;hitArea=[];
+ $('stageNum').textContent=String(stage+1).padStart(2,'0');$('subtitle').textContent=level.title;$('completion').hidden=true;$('completion').classList.remove('show');$('picker').hidden=true;$('stageButton').setAttribute('aria-expanded','false');$('boardHint').textContent='MOVE THE CUBE INTO THE DOTS';
  saved.stage=stage;persist();updateForm();refresh();}
 function hint(){if(found.size===level.solutions.length)return;const target=level.solutions.find(s=>!found.has(s.id));const spare=target.points.find(p=>level.degree.get(key(p))===1)||target.points[0];ringHint=key(spare);message('LOOK AROUND THIS DOT');schedule();setTimeout(()=>{ringHint=null;schedule()},2300)}
 $('prevStage').addEventListener('click',()=>load(stage-1));$('nextStage').addEventListener('click',()=>load(stage+1));$('stageButton').addEventListener('click',()=>{$('picker').hidden=!$('picker').hidden;$('stageButton').setAttribute('aria-expanded',String(!$('picker').hidden))});
-$('shapePrev').addEventListener('click',()=>changeShape(-1));$('shapeNext').addEventListener('click',()=>changeShape(1));$('depthUp').addEventListener('click',()=>setDepth(Math.round(ghost[2])+1));$('depthDown').addEventListener('click',()=>setDepth(Math.round(ghost[2])-1));
+$('shapePrev').addEventListener('click',()=>changeShape(-1));$('shapeNext').addEventListener('click',()=>changeShape(1));
 $('replay').addEventListener('click',()=>{delete saved.done[String(stage)];persist();load(stage)});$('next').addEventListener('click',()=>{load(stage+1);scrollTo(0,0)});$('hint').addEventListener('click',hint);$('sound').addEventListener('click',()=>{saved.sound=!saved.sound;persistentSound();if(saved.sound)sound('soft')});
 function persistentSound(){$('sound').textContent=saved.sound?'SOUND ON':'SOUND OFF';$('sound').setAttribute('aria-pressed',String(saved.sound));persist()}
 function toPoint(ev){const r=$('scene').getBoundingClientRect();return{x:(ev.clientX-r.left)*360/r.width,y:(ev.clientY-r.top)*450/r.height,screenX:ev.clientX,screenY:ev.clientY}}
@@ -230,25 +297,66 @@ function dragMove(start,p){const A=start.basis,dx=p.x-start.p.x,dy=p.y-start.p.y
  const next=integerOrigin();if(prev[0]!==next[0]||prev[1]!==next[1])sound('tick');schedule();
 }
 const canvas=$('scene');
+function toDouble(){const a=[...pointers.values()];if(a.length<2)return;
+ const p=a[0],q=a[1];const middle={x:(p.screenX+q.screenX)/2,y:(p.screenY+q.screenY)/2};
+ const origin=add(ghost,shape.ext.map(v=>v/2)),v0=xy(origin),v1=xy(add(origin,[0,0,1]));
+ const screenZ={x:(v1.x-v0.x),y:(v1.y-v0.y)};
+ gesture={dist:Math.max(5,Math.hypot(q.screenX-p.screenX,q.screenY-p.screenY)),angle:Math.atan2(q.screenY-p.screenY,q.screenX-p.screenX),mid:middle,side:shape.side,initialShape:shape,initialGhost:[...ghost],screenZ};
+ drag={type:'gesture'};cubeIsMoving=true;
+}
+function dragDepth(start,p){const prev=integerOrigin()[2],dx=p.x-start.p.x,dy=p.y-start.p.y;
+ const v=start.zVector,mag=v.x*v.x+v.y*v.y;
+ const dz=mag>30?(dx*v.x+dy*v.y)/mag:dy/Math.max(20,viewScale*camera.zoom);
+ ghost=clampGhost([start.orig[0],start.orig[1],start.orig[2]+dz]);
+ if(integerOrigin()[2]!==prev)sound('depth');schedule();}
+function applyGesture(){if(pointers.size<2||!gesture)return;const [p,q]=[...pointers.values()];
+ const d=Math.max(5,Math.hypot(q.screenX-p.screenX,q.screenY-p.screenY));
+ const angle=Math.atan2(q.screenY-p.screenY,q.screenX-p.screenX);
+ const dAngle=Math.atan2(Math.sin(angle-gesture.angle),Math.cos(angle-gesture.angle));
+ const targetSide=gesture.side*d/gesture.dist;
+ let pool=sizesFor(gesture.initialShape);
+ if(!pool.length)pool=allowed.filter(s=>isStraight(s));
+ const sizeChoice=pool.reduce((best,s)=>Math.abs(s.side-targetSide)<Math.abs(best.side-targetSide)?s:best,pool[0]);
+ let desired=sizeChoice;
+ // A twist selects exact lattice orientations. The object, not the camera, turns.
+ const variants=turnVariants(sizeChoice);
+ if(variants.length>1&&Math.abs(dAngle)>.25){const ix=Math.max(0,variants.findIndex(s=>s.id===sizeChoice.id));const steps=Math.round(dAngle/(Math.PI/5));desired=variants[(ix+steps%variants.length+variants.length)%variants.length];}
+ if(desired!==shape)applyShape(desired);
+ const mid={x:(p.screenX+q.screenX)/2,y:(p.screenY+q.screenY)/2};const dv={x:mid.x-gesture.mid.x,y:mid.y-gesture.mid.y};
+ const k=gesture.screenZ,mag=k.x*k.x+k.y*k.y;
+ const dz=mag>30?(dv.x*k.x+dv.y*k.y)/mag:dv.y/Math.max(20,viewScale*camera.zoom);
+ const prev=integerOrigin()[2];ghost=clampGhost([ghost[0],ghost[1],gesture.initialGhost[2]+dz]);
+ if(integerOrigin()[2]!==prev)sound('depth');schedule();
+}
 canvas.addEventListener('pointerdown',ev=>{if(!$('completion').hidden)return;ev.preventDefault();try{canvas.setPointerCapture(ev.pointerId)}catch(_){ }
- const p=toPoint(ev);pointers.set(ev.pointerId,p);sound('soft');if(pointers.size===1){const onGhost=isInside(p,hitArea)||Math.hypot(p.x-xy(add(ghost,shape.ext.map(v=>v/2))).x,p.y-xy(add(ghost,shape.ext.map(v=>v/2))).y)<24;
- drag={type:onGhost?'cube':'orbit',p,prev:p,orig:[...ghost],basis:localBasis(),moved:false};}else{const a=[...pointers.values()];drag={type:'pinch',dist:Math.hypot(a[0].screenX-a[1].screenX,a[0].screenY-a[1].screenY),zoom:camera.zoom};}
+ const p=toPoint(ev);pointers.set(ev.pointerId,p);
+ if(pointers.size>=2){toDouble();return}
+ const grip=depthGripPoint;const onDepth=grip&&Math.hypot(p.x-grip.x,p.y-grip.y)<23;
+ const onGhost=isInside(p,hitArea)||Math.hypot(p.x-xy(add(ghost,shape.ext.map(v=>v/2))).x,p.y-xy(add(ghost,shape.ext.map(v=>v/2))).y)<26;
+ const o=add(ghost,shape.ext.map(v=>v/2)),z0=xy(o),z1=xy(add(o,[0,0,1]));
+ drag={type:onDepth?'depth':onGhost?'cube':'orbit',p,prev:p,orig:[...ghost],basis:localBasis(),zVector:{x:z1.x-z0.x,y:z1.y-z0.y},moved:false};
+ cubeIsMoving=onGhost||onDepth;schedule();
 },{passive:false});
 canvas.addEventListener('pointermove',ev=>{if(!pointers.has(ev.pointerId))return;ev.preventDefault();const p=toPoint(ev),last=pointers.get(ev.pointerId);pointers.set(ev.pointerId,p);if(!drag)return;
- if(pointers.size>=2){if(drag.type!=='pinch'){const a=[...pointers.values()];drag={type:'pinch',dist:Math.hypot(a[0].screenX-a[1].screenX,a[0].screenY-a[1].screenY),zoom:camera.zoom}}const a=[...pointers.values()],d=Math.hypot(a[0].screenX-a[1].screenX,a[0].screenY-a[1].screenY);camera.zoom=clamp(drag.zoom*d/Math.max(1,drag.dist),.65,2.2);schedule();return}
- if(drag.type==='cube'){dragMove(drag,p);drag.moved||=Math.hypot(p.screenX-drag.p.screenX,p.screenY-drag.p.screenY)>6}
- else if(drag.type==='orbit'){const dx=p.screenX-last.screenX,dy=p.screenY-last.screenY;if(Math.hypot(p.screenX-drag.p.screenX,p.screenY-drag.p.screenY)>5)drag.moved=true;if(drag.moved){camera.yaw+=dx*.009;camera.pitch=clamp(camera.pitch-dy*.007,-1.25,-.14);schedule()}}
- },{passive:false});
-function pointerEnd(ev,cancel=false){if(!pointers.has(ev.pointerId))return;ev.preventDefault();const before=pointers.size;const mode=drag?.type,wasMoved=drag?.moved;pointers.delete(ev.pointerId);
- if(before===1&&mode==='cube'&&!cancel){if(wasMoved)trySnap();else{const s=ghostState();if(s.ready){ghost=s.origin;trySnap()}}}
- if(pointers.size===1){const v=[...pointers.values()][0];drag={type:'orbit',p:v,prev:v,moved:true}}else drag=null;schedule();}
-canvas.addEventListener('pointerup',ev=>pointerEnd(ev),{passive:false});canvas.addEventListener('pointercancel',ev=>pointerEnd(ev,true),{passive:false});canvas.addEventListener('lostpointercapture',ev=>{if(pointers.has(ev.pointerId))pointerEnd(ev,true)});
+ if(pointers.size>=2){if(!gesture)toDouble();applyGesture();return}
+ if(drag.type==='cube'){dragMove(drag,p);drag.moved||=Math.hypot(p.screenX-drag.p.screenX,p.screenY-drag.p.screenY)>5}
+ else if(drag.type==='depth'){dragDepth(drag,p);drag.moved||=Math.hypot(p.screenX-drag.p.screenX,p.screenY-drag.p.screenY)>5}
+ else if(drag.type==='orbit'){const dx=p.screenX-last.screenX,dy=p.screenY-last.screenY;
+  if(Math.hypot(p.screenX-drag.p.screenX,p.screenY-drag.p.screenY)>5)drag.moved=true;
+  if(drag.moved){camera.yaw+=dx*.008;camera.pitch=clamp(camera.pitch-dy*.006,-1.18,-.17);schedule()}}
+},{passive:false});
+function pointerEnd(ev,cancel=false){if(!pointers.has(ev.pointerId))return;ev.preventDefault();const before=pointers.size,mode=drag?.type,wasMoved=drag?.moved;
+ pointers.delete(ev.pointerId);
+ if(before===1&&!cancel&&(mode==='cube'||mode==='depth')){
+  if(wasMoved)trySnap();else{const st=ghostState();if(st.ready){ghost=st.origin;trySnap()}}
+ }
+ if(pointers.size===1){const v=[...pointers.values()][0];gesture=null;if(mode==='gesture'||mode==='gesture-ended'){drag={type:'gesture-ended',moved:true};cubeIsMoving=true}else{drag={type:'orbit',p:v,prev:v,moved:true};cubeIsMoving=false}}
+ else if(pointers.size===0){if((mode==='gesture'||mode==='gesture-ended')&&!cancel)trySnap();gesture=null;drag=null;cubeIsMoving=false}
+ schedule();}
+canvas.addEventListener('pointerup',ev=>pointerEnd(ev),{passive:false});
+canvas.addEventListener('pointercancel',ev=>pointerEnd(ev,true),{passive:false});
+canvas.addEventListener('lostpointercapture',ev=>{if(pointers.has(ev.pointerId))pointerEnd(ev,true)});
 canvas.addEventListener('contextmenu',ev=>ev.preventDefault());
-const depthTrack=$('depthTrack');let depthPid=null;
-function slideDepth(ev){const r=depthTrack.getBoundingClientRect(),rate=clamp((ev.clientY-r.top-15)/Math.max(1,r.height-30),0,1);const min=Math.round(boundsMin[2]-1),max=Math.round(Math.max(boundsMin[2]-1,boundsMax[2]-shape.ext[2]+1));setDepth(Math.round(max-rate*(max-min)))}
-depthTrack.addEventListener('pointerdown',ev=>{ev.preventDefault();ev.stopPropagation();depthPid=ev.pointerId;try{depthTrack.setPointerCapture(ev.pointerId)}catch(_){}slideDepth(ev)});
-depthTrack.addEventListener('pointermove',ev=>{if(ev.pointerId!==depthPid)return;ev.preventDefault();slideDepth(ev)});
-for(const evName of ['pointerup','pointercancel','lostpointercapture'])depthTrack.addEventListener(evName,ev=>{if(ev.pointerId===depthPid)depthPid=null});
 for(const name of ['gesturestart','gesturechange','gestureend'])document.addEventListener(name,ev=>{if($('board').contains(ev.target)&&ev.cancelable)ev.preventDefault()},{passive:false});
 window.addEventListener('keydown',ev=>{if(ev.key==='ArrowRight')changeShape(1);if(ev.key==='ArrowLeft')changeShape(-1);if(ev.key==='ArrowUp')setDepth(Math.round(ghost[2])+1);if(ev.key==='ArrowDown')setDepth(Math.round(ghost[2])-1)});
 // Deterministic API for geometric correctness, reachability, and interaction tests.
@@ -257,6 +365,7 @@ window.__CUBE_SNAP_TEST__={summary:()=>LEVELS.map((l,i)=>({stage:i+1,dots:l.poin
  setShape:(i)=>{if(i<0||i>=allowed.length)return false;shape=allowed[i];ghost=clampGhost(ghost);updateForm();schedule();return true},
  setGhost:(x,y,z)=>{ghost=clampGhost([x,y,z]);schedule();return ghostState().ready},
  getShapes:()=>allowed.map(s=>({id:s.id,side:s.side,first:s.first,ext:s.ext})),
+ getInteraction:()=>({pointerCount:pointers.size,drag:drag?.type||null,gesture:!!gesture,depthGrip:depthGripPoint&&{...depthGripPoint},camera:{...camera},cube:[...ghost],side:shape.side}),
  getSolutions:()=>level.solutions.map(s=>({id:s.id,points:s.points.map(p=>[...p])})),
  solveCurrent:()=>{for(const s of level.solutions){if(!found.has(s.id)){found.add(s.id);for(const p of s.points)used.set(key(p),(used.get(key(p))||0)+1)}}persistFound();refresh();return found.size},
  insertAllWithGhost:()=>{for(const cube of level.solutions){if(found.has(cube.id))continue;const t=shapeSignature(cube.points),ix=allowed.findIndex(s=>s.id===t);if(ix<0)throw Error('Unreachable shape');shape=allowed[ix];const lo=[0,1,2].map(j=>Math.min(...cube.points.map(p=>p[j])));ghost=lo;const st=ghostState();if(!st.ready)throw Error('Cannot align '+cube.id);if(!trySnap())throw Error('Failed to snap '+cube.id);}return found.size}
